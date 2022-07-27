@@ -6,11 +6,12 @@ class tweetsDAO {
             this.where('tweets.users', user_id);
         })
         
-        // .fullOuterJoin('currency', function() {
-        //     this.on('invoice_master.invoice_currency_id', '=', 'currency.id');
-        // }).andWhere(function() {
-        //     this.where('invoice_master.createddate', '<=', enddate)
-        // }).andWhere(function() {
+        .fullOuterJoin('users', function() {
+            this.on('tweets.users', '=', 'users.id');
+        })
+        
+        
+        // .andWhere(function() {
         //     if (applicationno) this.where('invoice_master.applicationno', 'like', '%' + applicationno + '%');
         // }).andWhere(function() {
         //     if (applicant) this.where('invoice_master.applicant', 'like', '%' + applicant + '%');
